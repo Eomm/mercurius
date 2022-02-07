@@ -81,7 +81,7 @@ async function buildServiceExternal () {
         return { user: { id: '1' } }
       },
       meDirect: () => {
-        return { id: '1' }
+        return { id: '1', __typename: 'User' }
       }
     }
   }
@@ -139,7 +139,7 @@ test('federated node should be able to return external Type directly', async (t)
     url: '/graphql',
     body: {
       query: `{
-        meDirect { name }
+        meDirect { id name }
         meWrap { user { name }  }
       }`
     }
